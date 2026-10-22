@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Games - Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9V2qkfapdTUP09RnQ7xmpPlk9RaG96SgkvKI5yy9y2MDc3AJPP_QeSaw&s=10) no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 81, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5100;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff5100;
+        }
+
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .card {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid rgba(255, 81, 0, 0.25);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .info-item:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff5100;
+            background: rgba(255, 81, 0, 0.12);
+            border: 1px solid rgba(255, 81, 0, 0.4);
+            border-radius: 12px;
+        }
+
+        .info-item h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .info-item p,
+        .info-item a {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+
+        .info-item a:hover {
+            color: #ff5100;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #cccccc;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        select option {
+            background: #121212;
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ff5100;
+            box-shadow: 0 0 0 3px rgba(255, 81, 0, 0.25);
+        }
+
+        input:user-invalid,
+        textarea:user-invalid {
+            border-color: #ef4444;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ff5100;
+            color: #111111;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff6a22;
+            box-shadow: 0 5px 15px rgba(255, 81, 0, 0.4);
+        }
+
+        .btn:focus-visible,
+        summary:focus-visible,
+        a:focus-visible {
+            outline: 2px solid #ff5100;
+            outline-offset: 3px;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: #888888;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .faq {
+            margin-top: 40px;
+        }
+
+        .faq details {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 0;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq summary::after {
+            content: "+";
+            color: #ff5100;
+            font-size: 1.3rem;
+        }
+
+        .faq details[open] summary::after {
+            content: "\2212";
+        }
+
+        .faq details p {
+            margin-top: 10px;
+            color: #aaaaaa;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 0.9rem;
+            color: #888888;
+            border-top: 1px solid rgba(255, 81, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav {
+                margin-top: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">WORLD GAMES</a>
+        <nav>
+            <a href="World Games.html">Home</a>
+            <a href="Platforms.html">Platforms</a>
+            <a href="Games.html">Games</a>
+            <a href="Contact.html" class="active" aria-current="page">Contact</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="page-title">
+            <h1>Contact Us</h1>
+            <p>Questions about a game, a price or an order? Send us a message and we'll get back to you by email.</p>
+        </div>
+
+        <div class="contact-layout">
+            <section class="card">
+                <h2>Get in touch</h2>
+
+                <div class="info-item">
+                    <span class="info-icon"><i class="fa-solid fa-envelope"></i></span>
+                    <div>
+                        <h3>Email</h3>
+                        <a href="mailto:worldgames1910@gmail.com">worldgames1910@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon"><i class="fa-solid fa-headset"></i></span>
+                    <div>
+                        <h3>Support</h3>
+                        <p>Help with keys, launchers and price questions.</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon"><i class="fa-solid fa-clock"></i></span>
+                    <div>
+                        <h3>Response time</h3>
+                        <p>We reply to every message by email.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Send a message</h2>
+
+                <!-- Replace the email below with your own address, or swap the action for your form service URL. -->
+                <form action="mailto:worldgames1910@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <select id="topic" name="topic">
+                            <option>Game or price question</option>
+                            <option>Order or key problem</option>
+                            <option>Launcher help (Steam, Epic, GOG...)</option>
+                            <option>Suggest a game</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                    <p class="form-note">This opens your email app with your message ready to send.</p>
+                </form>
+            </section>
+        </div>
+
+        <section class="card faq">
+            <h2>Common questions</h2>
+
+            <details>
+                <summary>Which launcher do I need for a game?</summary>
+                <p>Each game card on the Games page lists where it's available. The Platforms page explains how to redeem a key on each launcher.</p>
+            </details>
+
+            <details>
+                <summary>Why do prices differ between stores?</summary>
+                <p>Digital stores set their own prices by region. We show the best global price we found for each game.</p>
+            </details>
+
+            <details>
+                <summary>Can I suggest a game to add?</summary>
+                <p>Yes. Choose "Suggest a game" as the topic in the form above and tell us the title.</p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 World Games. All rights reserved. Bringing global PC gaming deals to players worldwide.</p>
+    </footer>
+
+</body>
+</html>

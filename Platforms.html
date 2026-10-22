@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Games - PC Platforms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9V2qkfapdTUP09RnQ7xmpPlk9RaG96SgkvKI5yy9y2MDc3AJPP_QeSaw&s=10) no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 81, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5100;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff5100;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .platform-card {
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid rgba(255, 81, 0, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .platform-card { scroll-margin-top: 110px; }
+
+        .platform-card:target { border-color: #ff5100; box-shadow: 0 15px 35px rgba(255, 81, 0, 0.35); }
+
+        .platform-card:hover {
+            border-color: #ff5100;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(255, 81, 0, 0.35);
+        }
+
+        .platform-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .platform-icon {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ff5100;
+            background: rgba(255, 81, 0, 0.12);
+            border: 1px solid rgba(255, 81, 0, 0.4);
+            border-radius: 12px;
+        }
+
+        .platform-head h3 {
+            font-size: 1.25rem;
+            color: #ffffff;
+        }
+
+        .platform-maker {
+            font-size: 0.85rem;
+            color: #888888;
+        }
+
+        .platform-card p {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #888888;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .game-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .game-list a {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #ff5100;
+            text-decoration: none;
+            background: rgba(255, 81, 0, 0.15);
+            border: 1px solid rgba(255, 81, 0, 0.3);
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .game-list a:hover {
+            background: rgba(255, 81, 0, 0.3);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ff5100;
+            color: #111111;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff6a22;
+            box-shadow: 0 5px 15px rgba(255, 81, 0, 0.4);
+        }
+
+        a:focus-visible {
+            outline: 2px solid #ff5100;
+            outline-offset: 3px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 0.9rem;
+            color: #888888;
+            border-top: 1px solid rgba(255, 81, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav {
+                margin-top: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">WORLD GAMES</a>
+        <nav>
+            <a href="World Games.html">Home</a>
+            <a href="Platforms.html" class="active" aria-current="page">Platforms</a>
+            <a href="Games.html">Games</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="page-title">
+            <h1>PC Platforms</h1>
+            <p>Every game in our catalog runs on PC. See which launcher each one comes on, then compare prices on the Games page.</p>
+        </div>
+
+        <div class="platforms-grid">
+
+            <div class="platform-card" id="steam">
+                <div>
+                    <div class="platform-head">
+                        <span class="platform-icon"><i class="fa-brands fa-steam"></i></span>
+                        <div>
+                            <h3>Steam</h3>
+                            <span class="platform-maker">Valve</span>
+                        </div>
+                    </div>
+                    <p>The largest PC store. Redeem your key in the Steam client, then download and play.</p>
+                    <span class="price-label">Available here (6 games)</span>
+                    <ul class="game-list">
+                        <li><a href="Games.html#gta-v">Grand Theft Auto V</a></li>
+                        <li><a href="Games.html#cs2">Counter-Strike 2</a></li>
+                        <li><a href="Games.html#cyberpunk-2077">Cyberpunk 2077</a></li>
+                        <li><a href="Games.html#apex-legends">Apex Legends</a></li>
+                        <li><a href="Games.html#rdr2">Red Dead Redemption 2</a></li>
+                        <li><a href="Games.html#overwatch-2">Overwatch 2</a></li>
+                    </ul>
+                </div>
+                <div class="platform-actions">
+                    <a href="Games.html" class="btn"><i class="fa-solid fa-cart-shopping"></i> View Games</a>
+                </div>
+            </div>
+
+            <div class="platform-card" id="epic">
+                <div>
+                    <div class="platform-head">
+                        <span class="platform-icon">
+    <svg viewBox="0 0 24 28" width="26" height="30" role="img" aria-label="Epic Games logo" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 1h20v18.5L12 27 2 19.5z" fill="#ff5100"/>
+        <text x="12" y="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="900" fill="#111111">EPIC</text>
+        <text x="12" y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="4.2" font-weight="700" fill="#111111">GAMES</text>
+    </svg>
+</span>
+                        <div>
+                            <h3>Epic Games Store</h3>
+                            <span class="platform-maker">Epic Games</span>
+                        </div>
+                    </div>
+                    <p>Known for free weekly games. Activate your key in the Epic Games Launcher.</p>
+                    <span class="price-label">Available here (3 games)</span>
+                    <ul class="game-list">
+                        <li><a href="Games.html#gta-v">Grand Theft Auto V</a></li>
+                        <li><a href="Games.html#cyberpunk-2077">Cyberpunk 2077</a></li>
+                        <li><a href="Games.html#rdr2">Red Dead Redemption 2</a></li>
+                    </ul>
+                </div>
+                <div class="platform-actions">
+                    <a href="Games.html" class="btn"><i class="fa-solid fa-cart-shopping"></i> View Games</a>
+                </div>
+            </div>
+
+            <div class="platform-card" id="gog">
+                <div>
+                    <div class="platform-head">
+                        <span class="platform-icon"><i class="fa-solid fa-compact-disc"></i></span>
+                        <div>
+                            <h3>GOG</h3>
+                            <span class="platform-maker">CD PROJEKT</span>
+                        </div>
+                    </div>
+                    <p>DRM-free games you can install without a launcher.</p>
+                    <span class="price-label">Available here (1 game)</span>
+                    <ul class="game-list">
+                        <li><a href="Games.html#cyberpunk-2077">Cyberpunk 2077</a></li>
+                    </ul>
+                </div>
+                <div class="platform-actions">
+                    <a href="Games.html" class="btn"><i class="fa-solid fa-cart-shopping"></i> View Games</a>
+                </div>
+            </div>
+
+            <div class="platform-card" id="rockstar">
+                <div>
+                    <div class="platform-head">
+                        <span class="platform-icon"><i class="fa-solid fa-gamepad"></i></span>
+                        <div>
+                            <h3>Rockstar Games Launcher</h3>
+                            <span class="platform-maker">Rockstar Games</span>
+                        </div>
+                    </div>
+                    <p>Rockstar's own launcher for its PC games. Add your key to your Rockstar account.</p>
+                    <span class="price-label">Available here (2 games)</span>
+                    <ul class="game-list">
+                        <li><a href="Games.html#gta-v">Grand Theft Auto V</a></li>
+                        <li><a href="Games.html#rdr2">Red Dead Redemption 2</a></li>
+                    </ul>
+                </div>
+                <div class="platform-actions">
+                    <a href="Games.html" class="btn"><i class="fa-solid fa-cart-shopping"></i> View Games</a>
+                </div>
+            </div>
+
+            <div class="platform-card" id="ea">
+                <div>
+                    <div class="platform-head">
+                        <span class="platform-icon"><i class="fa-solid fa-bolt"></i></span>
+                        <div>
+                            <h3>EA app</h3>
+                            <span class="platform-maker">Electronic Arts</span>
+                        </div>
+                    </div>
+                    <p>EA's PC launcher. Redeem your code and your progress stays with your EA account.</p>
+                    <span class="price-label">Available here (1 game)</span>
+                    <ul class="game-list">
+                        <li><a href="Games.html#apex-legends">Apex Legends</a></li>
+                    </ul>
+                </div>
+                <div class="platform-actions">
+                    <a href="Games.html" class="btn"><i class="fa-solid fa-cart-shopping"></i> View Games</a>
+                </div>
+            </div>
+
+            <div class="platform-card" id="battlenet">
+                <div>
+                    <div class="platform-head">
+                        <span class="platform-icon"><i class="fa-brands fa-battle-net"></i></span>
+                        <div>
+                            <h3>Battle.net</h3>
+                            <span class="platform-maker">Blizzard</span>
+                        </div>
+                    </div>
+                    <p>Blizzard's launcher for its online games, all under one account.</p>
+                    <span class="price-label">Available here (1 game)</span>
+                    <ul class="game-list">
+                        <li><a href="Games.html#overwatch-2">Overwatch 2</a></li>
+                    </ul>
+                </div>
+                <div class="platform-actions">
+                    <a href="Games.html" class="btn"><i class="fa-solid fa-cart-shopping"></i> View Games</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 World Games. All rights reserved. Bringing global PC gaming deals to players worldwide.</p>
+    </footer>
+
+</body>
+</html>
